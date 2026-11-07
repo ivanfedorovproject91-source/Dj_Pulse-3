@@ -1,0 +1,20 @@
+name = "dj-pulse-bot"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# Адрес опубликованного приложения (GitHub Pages), без завершающего «/».
+APP_URL = "https://YOUR_GITHUB_USER.github.io/dj-pulse"
+
+# Ежедневный запуск в 06:00 UTC = 09:00 по Москве. Weekly-подписчики получают по понедельникам.
+[triggers]
+crons = ["0 6 * * *"]
+
+# Хранилище подписчиков. Создаётся командой: npx wrangler kv namespace create SUBS
+[[kv_namespaces]]
+binding = "SUBS"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+# Секреты задаются командами (не хранятся в файле):
+#   npx wrangler secret put BOT_TOKEN
+#   npx wrangler secret put WEBHOOK_SECRET
